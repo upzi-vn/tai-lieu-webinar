@@ -1,21 +1,18 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Upzi Webinar</title>
-
-    <!-- BowNow Tracking -->
-    <script id="_bownow_ts">
-    var _bownow_ts = document.createElement('script');
-    _bownow_ts.charset = 'utf-8';
-    _bownow_ts.src = 'https://contents.bownow.jp/js/UTC_2adc512c6b59165cf79a/trace.js';
-    document.getElementsByTagName('head')[0].appendChild(_bownow_ts);
-    </script>
-</head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Đánh giá Thông điệp Tuyển dụng - Thang đo Sức hút Thương hiệu nhà tuyển dụng EmpAt</title>
+
+<!-- BowNow Tracking -->
+<script id="_bownow_ts">
+var _bownow_ts = document.createElement('script');
+_bownow_ts.charset = 'utf-8';
+_bownow_ts.src = 'https://contents.bownow.jp/js/UTC_2adc512c6b59165cf79a/trace.js';
+document.getElementsByTagName('head')[0].appendChild(_bownow_ts);
+</script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -33,14 +30,8 @@
     --score1: #C9A8FA;
     --score2: #9345FF;
   }
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  html {
-    scroll-behavior: smooth;
-  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
   body {
     font-family: 'Be Vietnam Pro', -apple-system, 'Segoe UI', sans-serif;
     background: var(--bg);
@@ -49,8 +40,7 @@
     font-size: 16px;
     padding-bottom: 140px;
   }
-  
-  /* Cấu hình chuẩn căn giữa cho toàn bộ trang */
+
   .wrap {
     display: block;
     width: 100%;
@@ -60,545 +50,198 @@
   }
 
   /* ---------- header ---------- */
-  header {
-    padding: 56px 0 36px;
-    width: 100%;
-    display: block;
-  }
+  header { padding: 56px 0 36px; width: 100%; display: block; }
   .eyebrow {
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: .18em;
-    text-transform: uppercase;
-    color: var(--purple-deep);
-    margin-bottom: 14px;
+    font-size: 12px; font-weight: 700; letter-spacing: .18em;
+    text-transform: uppercase; color: var(--purple-deep); margin-bottom: 14px;
   }
   h1 {
     font-size: clamp(26px, 4.6vw, 40px);
-    font-weight: 800;
-    line-height: 1.2;
-    letter-spacing: -.02em;
-    margin-bottom: 16px;
+    font-weight: 800; line-height: 1.2; letter-spacing: -.02em; margin-bottom: 16px;
   }
-  h1 em {
-    font-style: normal;
-    color: var(--purple);
-  }
+  h1 em { font-style: normal; color: var(--purple); }
   .lede {
-    color: var(--ink-soft);
-    font-size: 16px;
-    line-height: 1.6;
-    margin-bottom: 20px;
-    display: block;
+    color: var(--ink-soft); font-size: 16px; line-height: 1.6;
+    margin-bottom: 20px; display: block;
   }
   .source-note {
-    padding: 14px 18px;
-    background: var(--tint);
-    border: 1px solid var(--tint-border);
-    border-radius: 12px;
-    font-size: 13.5px;
-    color: var(--ink-soft);
-    display: block;
+    padding: 14px 18px; background: var(--tint); border: 1px solid var(--tint-border);
+    border-radius: 12px; font-size: 13.5px; color: var(--ink-soft); display: block;
   }
-  .source-note strong {
-    color: var(--ink);
-  }
-
-  /* ---------- guide download button (trong dock) ---------- */
-  .btn-guide {
-    flex: none;
-    background: #fff;
-    color: var(--purple-deep);
-    text-decoration: none;
-    border: 1.5px solid var(--purple);
-    padding: 12px 16px;
-    border-radius: 12px;
-    font-weight: 700;
-    font-size: 13.5px;
-    white-space: nowrap;
-    transition: background .15s, color .15s;
-  }
-  .btn-guide:hover {
-    background: var(--purple);
-    color: #fff;
-  }
+  .source-note strong { color: var(--ink); }
 
   /* ---------- how to ---------- */
   .howto {
-    background: var(--card);
-    border: 1px solid var(--line);
-    border-radius: 16px;
-    padding: 22px 24px;
-    margin-bottom: 36px;
-    display: block;
+    background: var(--card); border: 1px solid var(--line); border-radius: 16px;
+    padding: 22px 24px; margin-bottom: 36px; display: block;
   }
-  .howto h2 {
-    font-size: 15px;
-    font-weight: 700;
-    margin-bottom: 10px;
-  }
-  .howto ul {
-    list-style: none;
-  }
+  .howto h2 { font-size: 15px; font-weight: 700; margin-bottom: 10px; }
+  .howto ul { list-style: none; }
   .howto li {
-    display: flex;
-    gap: 12px;
-    align-items: baseline;
-    padding: 5px 0;
-    font-size: 14.5px;
-    color: var(--ink-soft);
+    display: flex; gap: 12px; align-items: baseline;
+    padding: 5px 0; font-size: 14.5px; color: var(--ink-soft);
   }
   .chip {
-    flex: none;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 26px;
-    height: 26px;
-    border-radius: 8px;
-    font-weight: 700;
-    font-size: 13px;
-    transform: translateY(4px);
+    flex: none; display: inline-flex; align-items: center; justify-content: center;
+    width: 26px; height: 26px; border-radius: 8px; font-weight: 700;
+    font-size: 13px; transform: translateY(4px);
   }
-  .chip.c0 {
-    background: var(--score0);
-    color: var(--ink-soft);
-  }
-  .chip.c1 {
-    background: var(--score1);
-    color: #fff;
-  }
-  .chip.c2 {
-    background: var(--score2);
-    color: #fff;
-  }
+  .chip.c0 { background: var(--score0); color: var(--ink-soft); }
+  .chip.c1 { background: var(--score1); color: #fff; }
+  .chip.c2 { background: var(--score2); color: #fff; }
 
   /* ---------- sections ---------- */
-  .dim {
-    margin-bottom: 34px;
-    display: block;
-  }
-  .dim-head {
-    display: flex;
-    align-items: baseline;
-    gap: 14px;
-    margin-bottom: 6px;
-  }
+  .dim { margin-bottom: 34px; display: block; }
+  .dim-head { display: flex; align-items: baseline; gap: 14px; margin-bottom: 6px; }
   .dim-letter {
-    font-size: 13px;
-    font-weight: 800;
-    letter-spacing: .12em;
-    color: var(--purple);
-    text-transform: uppercase;
-    white-space: nowrap;
+    font-size: 13px; font-weight: 800; letter-spacing: .12em;
+    color: var(--purple); text-transform: uppercase; white-space: nowrap;
   }
-  .dim h2 {
-    font-size: 20px;
-    font-weight: 800;
-    letter-spacing: -.01em;
-  }
-  .dim-sub {
-    color: var(--ink-soft);
-    font-size: 14px;
-    margin-bottom: 16px;
-  }
+  .dim h2 { font-size: 20px; font-weight: 800; letter-spacing: -.01em; }
+  .dim-sub { color: var(--ink-soft); font-size: 14px; margin-bottom: 16px; }
   .q {
-    background: var(--card);
-    border: 1px solid var(--line);
-    border-radius: 14px;
-    padding: 18px 20px;
-    margin-bottom: 10px;
-    display: flex;
-    gap: 18px;
-    align-items: center;
-    justify-content: space-between;
-    transition: border-color .2s;
+    background: var(--card); border: 1px solid var(--line); border-radius: 14px;
+    padding: 18px 20px; margin-bottom: 10px; display: flex; gap: 18px;
+    align-items: center; justify-content: space-between; transition: border-color .2s;
   }
-  .q.answered {
-    border-color: #D9C6FA;
-  }
-  .q-text {
-    font-size: 15px;
-    flex: 1;
-  }
-  .seg {
-    display: flex;
-    gap: 6px;
-    flex: none;
-  }
+  .q.answered { border-color: #D9C6FA; }
+  .q-text { font-size: 15px; flex: 1; }
+  .seg { display: flex; gap: 6px; flex: none; }
   .seg button {
-    width: 44px;
-    height: 44px;
-    border-radius: 12px;
-    border: 1.5px solid var(--line);
-    background: #fff;
-    font: inherit;
-    font-weight: 700;
-    font-size: 15px;
-    color: var(--ink-soft);
-    cursor: pointer;
-    transition: all .15s;
+    width: 44px; height: 44px; border-radius: 12px; border: 1.5px solid var(--line);
+    background: #fff; font: inherit; font-weight: 700; font-size: 15px;
+    color: var(--ink-soft); cursor: pointer; transition: all .15s;
   }
-  .seg button:hover {
-    border-color: var(--purple);
-    color: var(--purple);
-  }
-  .seg button:focus-visible {
-    outline: 3px solid var(--score1);
-    outline-offset: 2px;
-  }
-  .seg button.on0 {
-    background: var(--score0);
-    border-color: var(--score0);
-    color: var(--ink);
-  }
-  .seg button.on1 {
-    background: var(--score1);
-    border-color: var(--score1);
-    color: #fff;
-  }
-  .seg button.on2 {
-    background: var(--score2);
-    border-color: var(--score2);
-    color: #fff;
-  }
+  .seg button:hover { border-color: var(--purple); color: var(--purple); }
+  .seg button:focus-visible { outline: 3px solid var(--score1); outline-offset: 2px; }
+  .seg button.on0 { background: var(--score0); border-color: var(--score0); color: var(--ink); }
+  .seg button.on1 { background: var(--score1); border-color: var(--score1); color: #fff; }
+  .seg button.on2 { background: var(--score2); border-color: var(--score2); color: #fff; }
 
   /* ---------- results ---------- */
-  #results {
-    margin-top: 48px;
-    display: block;
-  }
+  #results { margin-top: 48px; display: block; }
   .res-card {
-    background: var(--card);
-    border: 1px solid var(--line);
-    border-radius: 20px;
-    padding: 30px 28px;
+    background: var(--card); border: 1px solid var(--line);
+    border-radius: 20px; padding: 30px 28px;
   }
-  .res-card h2 {
-    font-size: 22px;
-    font-weight: 800;
-    margin-bottom: 4px;
-  }
-  .res-empty {
-    color: var(--ink-soft);
-    font-size: 14.5px;
-  }
+  .res-card h2 { font-size: 22px; font-weight: 800; margin-bottom: 4px; }
+  .res-empty { color: var(--ink-soft); font-size: 14.5px; }
   .res-grid {
-    display: grid;
-    grid-template-columns: 280px 1fr;
-    gap: 28px;
-    align-items: center;
-    margin-top: 18px;
+    display: grid; grid-template-columns: 280px 1fr;
+    gap: 28px; align-items: center; margin-top: 18px;
   }
-  @media(max-width:680px) {
-    .res-grid {
-      grid-template-columns: 1fr;
-    }
-  }
-  .radar-box {
-    display: flex;
-    justify-content: center;
-  }
-  .bars {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-  .bar-row {
-    display: grid;
-    grid-template-columns: 1fr 44px;
-    gap: 10px;
-    align-items: center;
-  }
-  .bar-label {
-    font-size: 13.5px;
-    font-weight: 600;
-  }
+  @media(max-width:680px) { .res-grid { grid-template-columns: 1fr; } }
+  .radar-box { display: flex; justify-content: center; }
+  .bars { display: flex; flex-direction: column; gap: 12px; }
+  .bar-row { display: grid; grid-template-columns: 1fr 44px; gap: 10px; align-items: center; }
+  .bar-label { font-size: 13.5px; font-weight: 600; }
   .bar-track {
-    height: 9px;
-    background: var(--score0);
-    border-radius: 99px;
-    overflow: hidden;
-    margin-top: 5px;
+    height: 9px; background: var(--score0); border-radius: 99px;
+    overflow: hidden; margin-top: 5px;
   }
   .bar-fill {
-    height: 100%;
-    background: linear-gradient(90deg, var(--score1), var(--score2));
-    border-radius: 99px;
-    width: 0%;
-    transition: width .4s;
+    height: 100%; background: linear-gradient(90deg, var(--score1), var(--score2));
+    border-radius: 99px; width: 0%; transition: width .4s;
   }
-  .bar-num {
-    font-weight: 800;
-    font-size: 15px;
-    color: var(--purple-deep);
-    text-align: right;
+  .bar-num { font-weight: 800; font-size: 15px; color: var(--purple-deep); text-align: right; }
+  .reading { margin-top: 24px; border-top: 1px solid var(--line); padding-top: 20px; }
+  .reading h3 { font-size: 15px; font-weight: 700; margin-bottom: 10px; }
+  .reading p { font-size: 14.5px; color: var(--ink-soft); margin-bottom: 10px; }
+  .reading p strong { color: var(--ink); }
+
+  /* ---------- booking ---------- */
+  .booking { margin-top: 22px; border-top: 1px solid var(--line); padding-top: 22px; }
+  .booking-in {
+    display: flex; align-items: center; justify-content: space-between; gap: 18px;
+    background: var(--tint); border: 1px solid var(--tint-border);
+    border-radius: 14px; padding: 18px 20px;
   }
-  .reading {
-    margin-top: 24px;
-    border-top: 1px solid var(--line);
-    padding-top: 20px;
+  .booking-title { font-weight: 700; font-size: 15px; }
+  .booking-sub { font-size: 13.5px; color: var(--ink-soft); margin-top: 3px; }
+  .btn-book {
+    flex: none; background: var(--purple); color: #fff; text-decoration: none;
+    padding: 12px 20px; border-radius: 12px; font-weight: 700; font-size: 14px;
+    transition: background .15s;
   }
-  .reading h3 {
-    font-size: 15px;
-    font-weight: 700;
-    margin-bottom: 10px;
-  }
-  .reading p {
-    font-size: 14.5px;
-    color: var(--ink-soft);
-    margin-bottom: 10px;
-  }
-  .reading p strong {
-    color: var(--ink);
+  .btn-book:hover { background: var(--purple-deep); }
+  @media(max-width:600px) {
+    .booking-in { flex-direction: column; align-items: stretch; text-align: left; }
+    .btn-book { text-align: center; }
   }
 
   /* ---------- sticky bar ---------- */
   .dock {
-    position: fixed;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 50;
-    background: rgba(255, 255, 255, .95);
-    backdrop-filter: blur(10px);
-    border-top: 1px solid var(--line);
-    box-shadow: 0 -4px 20px rgba(0,0,0,0.05);
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 50;
+    background: rgba(255, 255, 255, .95); backdrop-filter: blur(10px);
+    border-top: 1px solid var(--line); box-shadow: 0 -4px 20px rgba(0,0,0,0.05);
   }
   .dock-in {
-    max-width: 820px;
-    margin: 0 auto;
-    padding: 16px 20px;
-    display: flex;
-    align-items: center;
-    gap: 18px;
+    max-width: 820px; margin: 0 auto; padding: 16px 20px;
+    display: flex; align-items: center; gap: 18px;
   }
-  .prog {
-    flex: 1;
-    min-width: 0;
+  .prog { flex: 1; min-width: 0; }
+  .prog-label { font-size: 12.5px; font-weight: 600; color: var(--ink-soft); margin-bottom: 6px; }
+  .prog-track { height: 7px; background: var(--score0); border-radius: 99px; overflow: hidden; }
+  .prog-fill { height: 100%; background: var(--purple); width: 0%; border-radius: 99px; transition: width .3s; }
+  .btn-dock {
+    flex: none; border: 0; border-radius: 12px; padding: 13px 22px;
+    background: var(--purple); color: #fff; font: inherit; font-weight: 700;
+    font-size: 14.5px; cursor: pointer; transition: background .15s;
   }
-  .prog-label {
-    font-size: 12.5px;
-    font-weight: 600;
-    color: var(--ink-soft);
-    margin-bottom: 6px;
-  }
-  .prog-track {
-    height: 7px;
-    background: var(--score0);
-    border-radius: 99px;
-    overflow: hidden;
-  }
-  .prog-fill {
-    height: 100%;
-    background: var(--purple);
-    width: 0%;
-    border-radius: 99px;
-    transition: width .3s;
-  }
-  .btn-pdf {
-    flex: none;
-    border: 0;
-    border-radius: 12px;
-    padding: 13px 22px;
-    background: var(--purple);
-    color: #fff;
-    font: inherit;
-    font-weight: 700;
-    font-size: 14.5px;
-    cursor: pointer;
-    transition: background .15s;
-  }
-  .btn-pdf:hover {
-    background: var(--purple-deep);
-  }
-  .btn-pdf:disabled {
-    background: var(--score1);
-    cursor: not-allowed;
-  }
-  .btn-pdf:focus-visible {
-    outline: 3px solid var(--score1);
-    outline-offset: 2px;
-  }
+  .btn-dock:hover { background: var(--purple-deep); }
+  .btn-dock:disabled { background: var(--score1); cursor: not-allowed; }
+  .btn-dock:focus-visible { outline: 3px solid var(--score1); outline-offset: 2px; }
 
-  footer {
-    margin-top: 44px;
-    font-size: 12.5px;
-    color: var(--ink-soft);
-    padding-bottom: 40px;
-  }
-
-  /* ---------- booking CTA ---------- */
-  .booking {
-    margin-top: 26px;
-    border-top: 1px solid var(--line);
-    padding-top: 22px;
-  }
-  .booking-in {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 18px;
-    background: var(--tint);
-    border: 1px solid var(--tint-border);
-    border-radius: 14px;
-    padding: 18px 20px;
-  }
-  .booking-title {
-    font-weight: 700;
-    font-size: 15px;
-  }
-  .booking-sub {
-    font-size: 13.5px;
-    color: var(--ink-soft);
-    margin-top: 3px;
-  }
-  .btn-book {
-    flex: none;
-    background: var(--purple);
-    color: #fff;
-    text-decoration: none;
-    padding: 12px 20px;
-    border-radius: 12px;
-    font-weight: 700;
-    font-size: 14px;
-    transition: background .15s;
-  }
-  .btn-book:hover {
-    background: var(--purple-deep);
-  }
-  @media(max-width:600px) {
-    .booking-in {
-      flex-direction: column;
-      align-items: stretch;
-      text-align: left;
-    }
-    .btn-book {
-      text-align: center;
-    }
-  }
+  footer { margin-top: 44px; font-size: 12.5px; color: var(--ink-soft); padding-bottom: 40px; }
 
   @media(max-width:560px) {
-    .q {
-      flex-direction: column;
-      align-items: stretch;
-      gap: 12px;
-    }
-    .seg {
-      justify-content: flex-end;
-    }
-    .dock-in {
-      gap: 8px;
-      padding: 12px 14px;
-    }
-    .prog-label {
-      display: none;
-    }
-    .btn-guide, .btn-pdf {
-      padding: 11px 12px;
-      font-size: 12.5px;
-    }
+    .q { flex-direction: column; align-items: stretch; gap: 12px; }
+    .seg { justify-content: flex-end; }
+    .dock-in { gap: 8px; padding: 12px 14px; }
+    .prog-label { display: none; }
+    .btn-dock { padding: 11px 14px; font-size: 13px; }
   }
   @media(prefers-reduced-motion:reduce) {
-    * {
-      transition: none !important;
-    }
-    html {
-      scroll-behavior: auto;
-    }
+    * { transition: none !important; }
+    html { scroll-behavior: auto; }
   }
 
   /* ---------- print ---------- */
-  #print-report {
-    display: none;
-  }
+  #print-report { display: none; }
   @media print {
-    body {
-      background: #fff;
-      padding: 0;
-    }
-    .app {
-      display: none;
-    }
-    .dock {
-      display: none;
-    }
-    #print-report {
-      display: block;
-      font-size: 12px;
-      color: #000;
-      padding: 10mm 6mm;
-    }
-    #print-report h1 {
-      font-size: 20px;
-      font-weight: 800;
-      margin-bottom: 2mm;
-    }
+    body { background: #fff; padding: 0; }
+    .app, .dock { display: none !important; }
+    #print-report { display: block; font-size: 12px; color: #000; padding: 10mm 6mm; }
+    #print-report h1 { font-size: 20px; font-weight: 800; margin-bottom: 2mm; }
     #print-report .p-eyebrow {
-      font-size: 10px;
-      letter-spacing: .15em;
-      text-transform: uppercase;
-      color: #6B21D6;
-      font-weight: 700;
-      margin-bottom: 2mm;
+      font-size: 10px; letter-spacing: .15em; text-transform: uppercase;
+      color: #6B21D6; font-weight: 700; margin-bottom: 2mm;
     }
-    #print-report .p-date {
-      font-size: 11px;
-      color: #555;
-      margin-bottom: 6mm;
-    }
-    #print-report table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-bottom: 6mm;
-    }
+    #print-report .p-date { font-size: 11px; color: #555; margin-bottom: 6mm; }
+    #print-report table { width: 100%; border-collapse: collapse; margin-bottom: 6mm; }
     #print-report th, #print-report td {
-      border: 1px solid #ccc;
-      padding: 2mm 2.5mm;
-      text-align: left;
-      vertical-align: top;
+      border: 1px solid #ccc; padding: 2mm 2.5mm; text-align: left; vertical-align: top;
     }
-    #print-report th {
-      background: #F5F0FF;
-      font-weight: 700;
-    }
-    #print-report .p-score {
-      text-align: center;
-      font-weight: 700;
-      width: 14mm;
-    }
-    #print-report .p-dim-row td {
-      background: #FAF8FF;
-      font-weight: 700;
-    }
-    #print-report .p-summary {
-      margin-bottom: 6mm;
-    }
-    #print-report .p-summary td {
-      border: 1px solid #ccc;
-    }
-    #print-report .p-reading {
-      font-size: 11.5px;
-      line-height: 1.5;
-      margin-bottom: 4mm;
-    }
+    #print-report th { background: #F5F0FF; font-weight: 700; }
+    #print-report .p-score { text-align: center; font-weight: 700; width: 14mm; }
+    #print-report .p-dim-row td { background: #FAF8FF; font-weight: 700; }
+    #print-report .p-summary { margin-bottom: 6mm; }
+    #print-report .p-summary td { border: 1px solid #ccc; }
+    #print-report .p-reading { font-size: 11.5px; line-height: 1.5; margin-bottom: 4mm; }
     #print-report .p-src {
-      font-size: 9.5px;
-      color: #666;
-      margin-top: 6mm;
-      border-top: 1px solid #ccc;
-      padding-top: 3mm;
+      font-size: 9.5px; color: #666; margin-top: 6mm;
+      border-top: 1px solid #ccc; padding-top: 3mm;
     }
   }
 </style>
 </head>
 <body>
 
-<div class="app">
+<div class="app" id="app">
   <div class="wrap">
 
     <header>
-      <div class="eyebrow">Upzi · Tài liệu webinar</div>
+      <div class="eyebrow">Upzi · Công cụ đánh giá</div>
       <h1>Thông điệp tuyển dụng của doanh nghiệp đang truyền tải đủ <em>5 giá trị Gen Z tìm kiếm</em> chưa?</h1>
       <p class="lede">Đánh giá nhanh thông điệp tuyển dụng của doanh nghiệp qua 15 tiêu chí cốt lõi dưới đây. Kết quả phân tích trực quan giúp Anh/Chị nhận diện các điểm nghẽn trong phễu thu hút ứng viên.</p>
       <div class="source-note">
@@ -630,6 +273,7 @@
           <div class="bars" id="bars"></div>
         </div>
         <div class="reading" id="reading"></div>
+
         <div class="booking" id="booking" style="display:none">
           <div class="booking-in">
             <div>
@@ -645,7 +289,8 @@
       </footer>
     </section>
 
-  </div> </div>
+  </div>
+</div>
 
 <div class="dock">
   <div class="dock-in">
@@ -653,8 +298,7 @@
       <div class="prog-label" id="prog-label">0 / 15 tiêu chí</div>
       <div class="prog-track"><div class="prog-fill" id="prog-fill"></div></div>
     </div>
-    <a class="btn-guide" href="./cam-nang-toi-uu-JD.pdf" download>Cẩm nang tối ưu JD</a>
-    <button class="btn-pdf" id="btn-pdf" disabled>Tải báo cáo phân tích PDF</button>
+    <button class="btn-dock" id="btn-dock" disabled>Tải báo cáo phân tích PDF</button>
   </div>
 </div>
 
@@ -709,12 +353,12 @@ const DIMS = [
   }
 ];
 
-const answers = {}; 
+const answers = {};
 const TOTAL_Q = DIMS.reduce((n, d) => n + d.qs.length, 0);
 
-// ---------- build quiz ----------
+/* ---------- build quiz ---------- */
 const quiz = document.getElementById('quiz');
-DIMS.forEach((d, di) => {
+DIMS.forEach(d => {
   const sec = document.createElement('section');
   sec.className = 'dim';
   sec.innerHTML = `
@@ -723,7 +367,7 @@ DIMS.forEach((d, di) => {
   d.qs.forEach((q, qi) => {
     const qid = `${d.key}-${qi}`;
     const row = document.createElement('div');
-    row.className = 'q'; 
+    row.className = 'q';
     row.id = `q-${qid}`;
     row.innerHTML = `
       <div class="q-text">${q}</div>
@@ -749,7 +393,7 @@ quiz.addEventListener('click', e => {
   refresh();
 });
 
-// ---------- bars ----------
+/* ---------- bars ---------- */
 const barsEl = document.getElementById('bars');
 DIMS.forEach(d => {
   const row = document.createElement('div');
@@ -763,15 +407,15 @@ DIMS.forEach(d => {
   barsEl.appendChild(row);
 });
 
-// ---------- radar ----------
+/* ---------- radar ---------- */
 const svg = document.getElementById('radar');
 const CX = 130, CY = 128, R = 92;
 function pt(i, frac) {
   const a = -Math.PI / 2 + i * 2 * Math.PI / 5;
   return [CX + Math.cos(a) * R * frac, CY + Math.sin(a) * R * frac];
 }
-function poly(frac) { 
-  return DIMS.map((_, i) => pt(i, frac).join(',')).join(' '); 
+function poly(frac) {
+  return DIMS.map((_, i) => pt(i, frac).join(',')).join(' ');
 }
 function drawBase() {
   let s = '';
@@ -790,15 +434,12 @@ function drawBase() {
 }
 drawBase();
 
-// ---------- scoring & refresh ----------
+/* ---------- scoring & refresh ---------- */
 function dimScore(d) {
   let sum = 0, n = 0;
   d.qs.forEach((_, qi) => {
     const v = answers[`${d.key}-${qi}`];
-    if (v !== undefined) { 
-      sum += v; 
-      n++; 
-    }
+    if (v !== undefined) { sum += v; n++; }
   });
   return { sum, n, max: d.qs.length * 2 };
 }
@@ -807,7 +448,7 @@ function refresh() {
   const done = Object.keys(answers).length;
   document.getElementById('prog-label').textContent = `${done} / ${TOTAL_Q} tiêu chí`;
   document.getElementById('prog-fill').style.width = (done / TOTAL_Q * 100) + '%';
-  document.getElementById('btn-pdf').disabled = done === 0;
+  document.getElementById('btn-dock').disabled = done < TOTAL_Q;
 
   const fracs = [];
   DIMS.forEach(d => {
@@ -844,8 +485,8 @@ function buildReading() {
   return h;
 }
 
-// ---------- PDF via print ----------
-document.getElementById('btn-pdf').addEventListener('click', () => {
+/* ---------- xuất báo cáo PDF ---------- */
+function makeReport() {
   const rep = document.getElementById('print-report');
   const today = new Date().toLocaleDateString('vi-VN');
   let h = `
@@ -869,14 +510,14 @@ document.getElementById('btn-pdf').addEventListener('click', () => {
     });
   });
   h += '</table>';
-  const done = Object.keys(answers).length;
-  if (done === TOTAL_Q) {
+  if (Object.keys(answers).length === TOTAL_Q) {
     h += `<div class="p-reading">${buildReading().replace(/<h3>.*?<\/h3>/, '<strong>Khuyến nghị từ Ban tư vấn:</strong><br>')}</div>`;
   }
   h += `<div class="p-src">Báo cáo kiểm toán định vị EVP được xây dựng dựa trên mô hình học thuật EmpAt - Berthon, P., Ewing, M., &amp; Hah, L.L. (2005). "Captivating company: dimensions of attractiveness in employer branding". International Journal of Advertising, 24(2), 151–172. Bản quyền chuẩn hóa tiêu chí thuộc Team Upzi.</div>`;
   rep.innerHTML = h;
   window.print();
-});
+}
+document.getElementById('btn-dock').addEventListener('click', makeReport);
 </script>
 </body>
 </html>
