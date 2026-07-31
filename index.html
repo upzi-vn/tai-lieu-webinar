@@ -207,11 +207,50 @@ document.getElementsByTagName('head')[0].appendChild(_bownow_ts);
     html { scroll-behavior: auto; }
   }
 
+  /* ---------- lead gate modal ---------- */
+  .modal-bg {
+    position: fixed; inset: 0; z-index: 100; display: none;
+    align-items: center; justify-content: center; padding: 20px;
+    background: rgba(34, 26, 54, .55); backdrop-filter: blur(4px);
+  }
+  .modal-bg.on { display: flex; }
+  .modal {
+    background: #fff; border-radius: 20px; padding: 30px 28px 26px;
+    max-width: 440px; width: 100%; box-shadow: 0 20px 50px rgba(0,0,0,.2);
+    max-height: 92vh; overflow-y: auto;
+  }
+  .modal h3 { font-size: 20px; font-weight: 800; line-height: 1.3; margin-bottom: 8px; }
+  .modal .m-sub { font-size: 14px; color: var(--ink-soft); margin-bottom: 20px; }
+  .modal label {
+    display: block; font-size: 13px; font-weight: 700;
+    margin-bottom: 6px; color: var(--ink);
+  }
+  .modal input {
+    width: 100%; padding: 12px 14px; border: 1.5px solid var(--line);
+    border-radius: 12px; font: inherit; font-size: 15px; margin-bottom: 14px;
+    color: var(--ink); background: #fff;
+  }
+  .modal input:focus { outline: none; border-color: var(--purple); }
+  .m-actions { display: flex; gap: 10px; margin-top: 6px; }
+  .m-btn {
+    flex: 1; border: 0; border-radius: 12px; padding: 13px 18px;
+    font: inherit; font-weight: 700; font-size: 14.5px; cursor: pointer;
+    transition: background .15s;
+  }
+  .m-primary { background: var(--purple); color: #fff; }
+  .m-primary:hover { background: var(--purple-deep); }
+  .m-primary:disabled { background: var(--score1); cursor: not-allowed; }
+  .m-ghost { background: #F3F0FA; color: var(--ink-soft); }
+  .m-ghost:hover { background: #E9E2F5; }
+  .m-note { font-size: 12px; color: var(--ink-soft); margin-top: 14px; line-height: 1.5; }
+  .m-err { font-size: 13px; color: #C0392B; margin-bottom: 12px; display: none; }
+  .m-err.on { display: block; }
+
   /* ---------- print ---------- */
   #print-report { display: none; }
   @media print {
     body { background: #fff; padding: 0; }
-    .app, .dock { display: none !important; }
+    .app, .dock, .modal-bg { display: none !important; }
     #print-report { display: block; font-size: 12px; color: #000; padding: 10mm 6mm; }
     #print-report h1 { font-size: 20px; font-weight: 800; margin-bottom: 2mm; }
     #print-report .p-eyebrow {
@@ -303,9 +342,42 @@ document.getElementsByTagName('head')[0].appendChild(_bownow_ts);
   </div>
 </div>
 
+<!-- ===== LEAD GATE MODAL ===== -->
+<div class="modal-bg" id="gate">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="gate-title">
+    <h3 id="gate-title">Nhận báo cáo phân tích chi tiết</h3>
+    <p class="m-sub">Báo cáo bao gồm điểm số từng tiêu chí và gợi ý cải thiện cho các khía cạnh đang ở mức thấp.</p>
+
+    <div class="m-err" id="gate-err">Vui lòng điền đầy đủ họ tên, email, tên doanh nghiệp và số điện thoại.</div>
+
+    <label for="g-email">Email công việc <span style="color:#9345FF">*</span></label>
+    <input type="email" id="g-email" placeholder="ten@congty.com" autocomplete="email">
+
+    <label for="g-company">Tên doanh nghiệp <span style="color:#9345FF">*</span></label>
+    <input type="text" id="g-company" placeholder="Công ty TNHH ABC" autocomplete="organization">
+
+    <label for="g-name">Họ tên <span style="color:#9345FF">*</span></label>
+    <input type="text" id="g-name" placeholder="Nguyễn Văn A" autocomplete="name">
+
+    <label for="g-phone">Số điện thoại <span style="color:#9345FF">*</span></label>
+    <input type="tel" id="g-phone" placeholder="09xx xxx xxx" autocomplete="tel">
+    <p style="font-size:12.5px; color:#5B5471; margin:-8px 0 14px;">Dùng để gửi báo cáo qua Zalo nếu email không nhận được.</p>
+
+    <div class="m-actions">
+      <button class="m-btn m-ghost" id="gate-cancel" type="button">Để sau</button>
+      <button class="m-btn m-primary" id="gate-submit" type="button">Nhận báo cáo</button>
+    </div>
+
+    <p class="m-note">Kết quả đánh giá sẽ được gửi kèm để đội ngũ Upzi có thể hỗ trợ Anh/Chị chính xác hơn khi cần. Upzi không chia sẻ thông tin này với bên thứ ba.</p>
+  </div>
+</div>
+
 <div id="print-report"></div>
 
 <script>
+/* ====== CẤU HÌNH: đổi endpoint Formspree tại đây ====== */
+const FORM_ENDPOINT = "https://formspree.io/f/maqrzdrn";
+
 const DIMS = [
   {
     key: "development", letter: "01 · Development Value", name: "Giá trị Phát triển",
@@ -518,7 +590,98 @@ function makeReport() {
   rep.innerHTML = h;
   window.print();
 }
-document.getElementById('btn-dock').addEventListener('click', makeReport);
+
+/* ---------- LEAD GATE ---------- */
+const gate = document.getElementById('gate');
+const gErr = document.getElementById('gate-err');
+const gSubmit = document.getElementById('gate-submit');
+let leadSent = false;   // đã gửi rồi thì lần sau tải thẳng, không hỏi lại
+
+function openGate() {
+  gErr.classList.remove('on');
+  gate.classList.add('on');
+  setTimeout(() => document.getElementById('g-email').focus(), 50);
+}
+function closeGate() { gate.classList.remove('on'); }
+
+document.getElementById('btn-dock').addEventListener('click', () => {
+  if (leadSent) { makeReport(); return; }
+  openGate();
+});
+document.getElementById('gate-cancel').addEventListener('click', closeGate);
+gate.addEventListener('click', e => { if (e.target === gate) closeGate(); });
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && gate.classList.contains('on')) closeGate();
+});
+
+gSubmit.addEventListener('click', async () => {
+  const email = document.getElementById('g-email').value.trim();
+  const company = document.getElementById('g-company').value.trim();
+  const name = document.getElementById('g-name').value.trim();
+  const phone = document.getElementById('g-phone').value.trim();
+
+  const okEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  const okPhone = /^[0-9+().\s-]{8,}$/.test(phone);
+  if (!okEmail || !company || !name || !okPhone) {
+    gErr.classList.add('on');
+    return;
+  }
+  gErr.classList.remove('on');
+  gSubmit.disabled = true;
+  gSubmit.textContent = 'Đang gửi...';
+
+  // gom điểm số gửi kèm
+  const payload = {
+    email: email,
+    company: company,
+    name: name,
+    phone: phone,
+    _subject: `[EmpAt] ${company} - kết quả đánh giá thông điệp tuyển dụng`
+  };
+  let total = 0;
+  DIMS.forEach(d => {
+    const s = dimScore(d);
+    total += s.sum;
+    payload[d.name] = `${s.sum}/${s.max}`;
+  });
+  payload['TỔNG ĐIỂM'] = `${total}/30`;
+  payload['Thời gian'] = new Date().toLocaleString('vi-VN');
+
+  // gửi bằng form POST ẩn -> không bị CORS chặn như fetch
+  try {
+    let ifr = document.getElementById('fs-sink');
+    if (!ifr) {
+      ifr = document.createElement('iframe');
+      ifr.id = 'fs-sink';
+      ifr.name = 'fs-sink';
+      ifr.style.display = 'none';
+      document.body.appendChild(ifr);
+    }
+    const f = document.createElement('form');
+    f.method = 'POST';
+    f.action = FORM_ENDPOINT;
+    f.target = 'fs-sink';
+    f.style.display = 'none';
+    Object.keys(payload).forEach(k => {
+      const i = document.createElement('input');
+      i.type = 'hidden';
+      i.name = k;
+      i.value = payload[k];
+      f.appendChild(i);
+    });
+    document.body.appendChild(f);
+    f.submit();
+    setTimeout(() => f.remove(), 1000);
+  } catch (err) {
+    console.warn('Gui ket qua khong thanh cong:', err);
+  }
+
+  leadSent = true;
+  gSubmit.disabled = false;
+  gSubmit.textContent = 'Nhận báo cáo';
+  closeGate();
+  setTimeout(makeReport, 250);
+});
 </script>
 </body>
 </html>
