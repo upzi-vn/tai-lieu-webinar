@@ -647,33 +647,48 @@ gSubmit.addEventListener('click', async () => {
   payload['TỔNG ĐIỂM'] = `${total}/30`;
   payload['Thời gian'] = new Date().toLocaleString('vi-VN');
 
-  // gửi bằng form POST ẩn -> không bị CORS chặn như fetch
+  // gửi kết quả: ưu tiên AJAX (bỏ qua captcha), lỗi thì fallback form POST ẩn
+  let sentOk = false;
   try {
-    let ifr = document.getElementById('fs-sink');
-    if (!ifr) {
-      ifr = document.createElement('iframe');
-      ifr.id = 'fs-sink';
-      ifr.name = 'fs-sink';
-      ifr.style.display = 'none';
-      document.body.appendChild(ifr);
-    }
-    const f = document.createElement('form');
-    f.method = 'POST';
-    f.action = FORM_ENDPOINT;
-    f.target = 'fs-sink';
-    f.style.display = 'none';
-    Object.keys(payload).forEach(k => {
-      const i = document.createElement('input');
-      i.type = 'hidden';
-      i.name = k;
-      i.value = payload[k];
-      f.appendChild(i);
+    const r = await fetch(FORM_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(payload)
     });
-    document.body.appendChild(f);
-    f.submit();
-    setTimeout(() => f.remove(), 1000);
+    sentOk = r.ok;
+    if (!r.ok) console.warn('Formspree tra ve loi:', r.status, await r.text());
   } catch (err) {
-    console.warn('Gui ket qua khong thanh cong:', err);
+    console.warn('AJAX that bai, fallback form POST:', err);
+  }
+
+  if (!sentOk) {
+    try {
+      let ifr = document.getElementById('fs-sink');
+      if (!ifr) {
+        ifr = document.createElement('iframe');
+        ifr.id = 'fs-sink';
+        ifr.name = 'fs-sink';
+        ifr.style.display = 'none';
+        document.body.appendChild(ifr);
+      }
+      const f = document.createElement('form');
+      f.method = 'POST';
+      f.action = FORM_ENDPOINT;
+      f.target = 'fs-sink';
+      f.style.display = 'none';
+      Object.keys(payload).forEach(k => {
+        const i = document.createElement('input');
+        i.type = 'hidden';
+        i.name = k;
+        i.value = payload[k];
+        f.appendChild(i);
+      });
+      document.body.appendChild(f);
+      f.submit();
+      setTimeout(() => f.remove(), 1000);
+    } catch (err2) {
+      console.warn('Fallback cung that bai:', err2);
+    }
   }
 
   leadSent = true;
